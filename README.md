@@ -19,7 +19,7 @@ Association
 
 - has_many :items
 - has_many :memories
-- has_one :streetaddress
+- has_one :street_address
 
 itemsテーブル
 
@@ -31,45 +31,46 @@ itemsテーブル
 | condition_id    | integer     | null: false                   |
 | delivery_fee_id | integer     | null: false                   |
 | shipping_area_id| integer     | null: false                   |
-| shipping_days_id| integer     | null: false                     |
-| user            | references  | null: false, foreign_key:true |
+| shipping_days_id| integer     | null: false                   |
+| user_id         | references  | null: false, foreign_key:true |
 
 Association
 
-- has_many :memory
+- has_many :memories
 - belongs_to :user
-- belongs_to_active_hash
+- belongs_to_active_hash 
 
 memoriesテーブル
 
-| Column          | Type   | Options                       |
-| --------------- | ------ | ----------------------------- |
-| user_id         | re   | null: false, foreign_key:true |
-| item-id         | re   | null: false, foreign_key:true |
+| Column          | Type         | Options                       |
+| --------------- | ------------ | ----------------------------- |
+| user_id         | references   | null: false, foreign_key:true |
+| item-id         | references   | null: false, foreign_key:true |
 
 Association
 
-- has_one :streetaddress
+- has_one :street_address
 - belongs_to :user
 - belongs_to :item
 
 street_addresssテーブル
 
-| Column          | Type   | Options                       |
-| --------------- | ------ | ----------------------------- |
-| postal_code     | string | null: false                   |
-| prefectures_id  | integer| null: false                   |
-| city            | string | null: false                   |
-| address_detail  | string | null: false                   |
-| apartment_name  | string |                               |
-| room_number     | string |                               |
-| phone_number    | string | null: false                   |
-| memory_id       | re   | null: false, foreign_key:true |
+| Column          | Type         | Options                       |
+| --------------- | ------------ | ----------------------------- |
+| postal_code     | string       | null: false                   |
+| prefectures_id  | integer      | null: false                   |
+| city            | string       | null: false                   |
+| address_detail  | string       | null: false                   |
+| apartment_name  | string       |                               |
+| room_number     | string       |                               |
+| phone_number    | string       | null: false                   |
+| memory_id       | references   | null: false, foreign_key:true |
 
 Association
 
 - belongs_to :user
 - belongs_to :memory
+- belongs_to_active_hash
 
 
 
