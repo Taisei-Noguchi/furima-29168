@@ -13,7 +13,7 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :detail, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, format: { with:/\A[0-9]+\z/},numericality: { only_integer: true, greater_than: 300, less_than: 9999999 }
   validates :category_id, presence: true, numericality: { other_than: 1 }
   validates :condition_id, presence: true, numericality: { other_than: 1 }
   validates :delivery_fee_id, presence: true, numericality: { other_than: 1 }
