@@ -17,7 +17,6 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def update
@@ -26,7 +25,6 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
