@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
   private
   def set_item
     @item = Item.find(params[:item_id])
+    redirect_to root_path if @item.order.present?
   end
 
   def order_params

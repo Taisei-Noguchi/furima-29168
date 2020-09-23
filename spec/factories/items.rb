@@ -10,8 +10,8 @@ FactoryBot.define do
     shipping_days_id {"2"}
     association :user
 
-    # after(:build) do |item|
-    #   item.image.attach(io: File.open('public/output-image2.png'), filename: 'output-image2.png')
-    # end
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/output-image2.png'), filename: 'output-image2.png')
+    end
   end
 end
