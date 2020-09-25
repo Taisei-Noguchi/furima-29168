@@ -24,7 +24,7 @@ RSpec.describe StreetAddress, type: :model do
         expect(@street_address.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Include hyphen(-)")
       end
 
-      it "郵便番号に(-)が入っていないと購入できない" do
+      it "郵便番号に(-)が含まれていないと購入できない" do
         @street_address.postal_code = 1234567
         @street_address.valid?
         expect(@street_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
@@ -58,6 +58,18 @@ RSpec.describe StreetAddress, type: :model do
         @street_address.phone_number = "１２３４５"
         @street_address.valid?
         expect(@street_address.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it "電話番号に(-)が含まれていると購入できない" do
+        @street_address.phone_number = "-"
+        @street_address.valid?
+        expect(@street_address.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it "電話番号が12桁以上だと購入できない" do
+        @street_address.phone_number = "012044122222"
+        @street_address.valid?
+        expect(@street_address.errors.full_messages).to include("Phone number is invalid"])
       end
 
       it "トークンが生成されないと購入できない" do
