@@ -18,7 +18,7 @@ usersテーブル
 Association
 
 - has_many :items
-- has_many :memories
+- has_one :order
 
 itemsテーブル
 
@@ -36,11 +36,11 @@ itemsテーブル
 
 Association
 
-- has_one :memory
+- has_one :order
 - belongs_to :user
 - belongs_to_active_hash 
 
-memoriesテーブル
+ordersテーブル
 
 | Column          | Type         | Options                       |
 | --------------- | ------------ | ----------------------------- |
@@ -53,21 +53,21 @@ Association
 - belongs_to :user
 - belongs_to :item
 
-street_addresssテーブル
+addressesテーブル
 
 | Column          | Type         | Options                       |
 | --------------- | ------------ | ----------------------------- |
 | postal_code     | string       | null: false                   |
-| prefectures_id  | integer      | null: false                   |
+| shipping_area_id| integer      | null: false                   |
 | city            | string       | null: false                   |
 | address_detail  | string       | null: false                   |
 | apartment_name  | string       |                               |
 | phone_number    | string       | null: false                   |
-| memory          | references   | null: false, foreign_key:true |
+| order           | references   | null: false, foreign_key:true |
 
 Association
 
-- belongs_to :memory
+- belongs_to :order
 - belongs_to_active_hash
 
 
